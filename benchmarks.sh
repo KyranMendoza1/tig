@@ -3,7 +3,7 @@ set -e
 
 # Ask for player_id as input
 read -p "Enter player ID: " PLAYER_ID
-
+PLAYER_ID=0x5de35f527176887b1b42a2703ba4d64e62a48de4
 BLOCK_ID=$(curl -s https://mainnet-api.tig.foundation/get-block | jq -r '.block.id')
 RESP=$(curl -s "https://mainnet-api.tig.foundation/get-benchmarks?block_id=$BLOCK_ID&player_id=$PLAYER_ID")
 
