@@ -21,8 +21,8 @@ JOBS = dict(
     ),
     vehicle_routing=dict(
         cw_heuristic=dict(
-            benchmark_duration=10000,
-            wait_slave_duration=5000,
+            benchmark_duration=15000,
+            wait_slave_duration=20000,
             num_jobs=1,
             weight=10,
         )
