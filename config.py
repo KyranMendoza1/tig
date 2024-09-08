@@ -32,7 +32,7 @@ JOBS = dict(
             benchmark_duration=10000,
             wait_slave_duration=5000,
             num_jobs=1,
-            weight=10,
+            weight=2,
         )
     ),
     vector_search=dict(
