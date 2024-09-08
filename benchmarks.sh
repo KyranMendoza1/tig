@@ -49,7 +49,7 @@ echo "$OUTPUT"
 
 # Continuously check for new solutions
 while true; do
-    sleep 5 # Adjust the sleep duration as needed
+    sleep 60 # Adjust the sleep duration as needed
     NEW_RESP=$(curl -s "https://mainnet-api.tig.foundation/get-benchmarks?block_id=$BLOCK_ID&player_id=$PLAYER_ID")
     NEW_BENCHMARKS=$(echo $NEW_RESP | jq -c '[.benchmarks[]] | sort_by(.settings.challenge_id, -.details.num_solutions)')
 
@@ -88,5 +88,7 @@ while true; do
     done
 
     # Update the solutions count for the next iteration
-    SOLUTIONS_COUNT=("${NEW_SOLUTIONS_COUNT[@]}")
+    for CHALLENGE_NAME in "Satisfiability" "Vehicle Routing" "Knapsack" "Vector Search"; do
+        SOLUTIONS_COUNT["$CHALLENGE_NAME"]=${NEW_SOLUTIONS_COUNT[$CHALLENGE_NAME]}
+    done
 done
