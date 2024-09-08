@@ -4,7 +4,7 @@ apt update
 apt install -y tmux build-essential pkg-config libssl-dev git curl
 
 # Start a new tmux session named 'tig-session' and run the commands inside it
-tmux new-session -d -s tig-veh bash -c '
+tmux new-session -d -s tig-session bash -c '
     # Install Rust
     curl --proto =https --tlsv1.3 https://sh.rustup.rs -sSf | sh -s -- -y
     source $HOME/.cargo/env
@@ -18,7 +18,7 @@ tmux new-session -d -s tig-veh bash -c '
     git pull --no-edit --no-rebase https://github.com/tig-foundation/tig-monorepo.git vehicle_routing/cw_heuristic
 
     # Compile the selected algorithms
-    ALGOS_TO_COMPILE="vehicle_routing/cw_heuristic"
+    ALGOS_TO_COMPILE="vehicle_routing_cw_heuristic"
     cargo build -p tig-benchmarker --release --no-default-features --features "${ALGOS_TO_COMPILE}"
 
     # Get the number of CPU threads available
