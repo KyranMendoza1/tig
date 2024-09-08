@@ -15,11 +15,48 @@ for BENCHMARK in $(echo $BENCHMARKS | jq -c '.[]'); do
     SETTINGS=$(echo $BENCHMARK | jq -c '.settings')
     CHALLENGE_ID=$(echo $BENCHMARK | jq -r '.settings.challenge_id')
     NUM_SOLUTIONS=$(echo $BENCHMARK | jq -r '.details.num_solutions')
-    printf "ID: %-38s #Solutions: %-5s Settings: %-50s \n" "$ID" "$NUM_SOLUTIONS" "$SETTINGS"
+
+    # Map challenge ID to challenge name
+    case $CHALLENGE_ID in
+        'c_001')
+            CHALLENGE_NAME="Satisfiability"
+            ;;
+        'c_002')
+            CHALLENGE_NAME="Vehicle Routing"
+            ;;
+        'c_003')
+            CHALLENGE_NAME="Knapsack"
+            ;;
+        'c_004')
+            CHALLENGE_NAME="Vector Search"
+            ;;
+        *)
+            CHALLENGE_NAME="Unknown Challenge"
+            ;;
+    esac
+
+    printf "ID: %-38s #Solutions: %-5s Challenge: %-20s Settings: %-50s \n" "$ID" "$NUM_SOLUTIONS" "$CHALLENGE_NAME" "$SETTINGS"
     SOLUTIONS_COUNT["$CHALLENGE_ID"]=$(( ${SOLUTIONS_COUNT["$CHALLENGE_ID"]:-0} + NUM_SOLUTIONS ))
 done
 
-echo "Total solutions by Challenge ID:"
+echo "Total solutions by Challenge:"
 for CHALLENGE_ID in "${!SOLUTIONS_COUNT[@]}"; do
-    echo "Challenge ID: $CHALLENGE_ID, Total Solutions: ${SOLUTIONS_COUNT[$CHALLENGE_ID]}"
+    case $CHALLENGE_ID in
+        'c_001')
+            CHALLENGE_NAME="Satisfiability"
+            ;;
+        'c_002')
+            CHALLENGE_NAME="Vehicle Routing"
+            ;;
+        'c_003')
+            CHALLENGE_NAME="Knapsack"
+            ;;
+        'c_004')
+            CHALLENGE_NAME="Vector Search"
+            ;;
+        *)
+            CHALLENGE_NAME="Unknown Challenge"
+            ;;
+    esac
+    echo "Challenge: $CHALLENGE_NAME, Total Solutions: ${SOLUTIONS_COUNT[$CHALLENGE_ID]}"
 done
