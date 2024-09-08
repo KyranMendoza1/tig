@@ -18,16 +18,16 @@ for BENCHMARK in $(echo $BENCHMARKS | jq -c '.[]'); do
 
     # Map challenge ID to challenge name
     case $CHALLENGE_ID in
-        'c_001')
+        'c001')
             CHALLENGE_NAME="Satisfiability"
             ;;
-        'c_002')
+        'c002')
             CHALLENGE_NAME="Vehicle Routing"
             ;;
-        'c_003')
+        'c003')
             CHALLENGE_NAME="Knapsack"
             ;;
-        'c_004')
+        'c004')
             CHALLENGE_NAME="Vector Search"
             ;;
         *)
@@ -42,16 +42,16 @@ done
 echo "Total solutions by Challenge:"
 for CHALLENGE_ID in "${!SOLUTIONS_COUNT[@]}"; do
     case $CHALLENGE_ID in
-        'c_001')
+        'c001')
             CHALLENGE_NAME="Satisfiability"
             ;;
-        'c_002')
+        'c002')
             CHALLENGE_NAME="Vehicle Routing"
             ;;
-        'c_003')
+        'c003')
             CHALLENGE_NAME="Knapsack"
             ;;
-        'c_004')
+        'c004')
             CHALLENGE_NAME="Vector Search"
             ;;
         *)
