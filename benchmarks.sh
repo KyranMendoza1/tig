@@ -16,18 +16,21 @@ for BENCHMARK in $(echo $BENCHMARKS | jq -c '.[]'); do
     CHALLENGE_ID=$(echo $BENCHMARK | jq -r '.settings.challenge_id')
     NUM_SOLUTIONS=$(echo $BENCHMARK | jq -r '.details.num_solutions')
 
-    # Map challenge ID to challenge name
-    case $CHALLENGE_ID in
-        'c001')
+    # Normalize challenge ID (removing underscores and converting to lowercase)
+    NORMALIZED_ID=$(echo "$CHALLENGE_ID" | tr -d '_' | tr '[:upper:]' '[:lower:]')
+
+    # Map normalized challenge ID to challenge name
+    case $NORMALIZED_ID in
+        'c001' | 'c_001')
             CHALLENGE_NAME="Satisfiability"
             ;;
-        'c002')
+        'c002' | 'c_002')
             CHALLENGE_NAME="Vehicle Routing"
             ;;
-        'c003')
+        'c003' | 'c_003')
             CHALLENGE_NAME="Knapsack"
             ;;
-        'c004')
+        'c004' | 'c_004')
             CHALLENGE_NAME="Vector Search"
             ;;
         *)
@@ -41,17 +44,18 @@ done
 
 echo "Total solutions by Challenge:"
 for CHALLENGE_ID in "${!SOLUTIONS_COUNT[@]}"; do
-    case $CHALLENGE_ID in
-        'c001')
+    NORMALIZED_ID=$(echo "$CHALLENGE_ID" | tr -d '_' | tr '[:upper:]' '[:lower:]')
+    case $NORMALIZED_ID in
+        'c001' | 'c_001')
             CHALLENGE_NAME="Satisfiability"
             ;;
-        'c002')
+        'c002' | 'c_002')
             CHALLENGE_NAME="Vehicle Routing"
             ;;
-        'c003')
+        'c003' | 'c_003')
             CHALLENGE_NAME="Knapsack"
             ;;
-        'c004')
+        'c004' | 'c_004')
             CHALLENGE_NAME="Vector Search"
             ;;
         *)
