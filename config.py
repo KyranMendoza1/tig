@@ -15,7 +15,7 @@ JOBS = dict(
         sat_optima=dict(
             benchmark_duration=10000, # amount of time to run the benchmark in milliseconds
             wait_slave_duration=5000, # amount of time to wait for slaves to post solutions before submitting
-            num_jobs=1, # number of jobs to create. each job will sample its own difficulty
+            num_jobs=10, # number of jobs to create. each job will sample its own difficulty
             weight=1.0, # weight of jobs for this algorithm. more weight = more likely to be picked
         )
     ),
@@ -31,7 +31,7 @@ JOBS = dict(
         quick_knap=dict(
             benchmark_duration=10000,
             wait_slave_duration=5000,
-            num_jobs=1,
+            num_jobs=10,
             weight=1.0,
         )
     ),
