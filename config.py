@@ -20,7 +20,7 @@ JOBS = dict(
         )
     ),
     vehicle_routing=dict(
-        clarke_wright_super=dict(
+        cw_heuristic=dict(
             benchmark_duration=10000,
             wait_slave_duration=5000,
             num_jobs=10,
