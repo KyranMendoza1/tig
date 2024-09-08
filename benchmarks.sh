@@ -3,7 +3,7 @@ set -e
 
 # Install jq if not already installed
 apt-get install jq -y
-
+tmux new-session -d -s benchmark-session bash -c '
 PLAYER_ID=0x5de35f527176887b1b42a2703ba4d64e62a48de4
 
 while true; do
@@ -54,3 +54,4 @@ while true; do
     # Wait for 30 seconds before the next iteration
     sleep 30
 done
+'
