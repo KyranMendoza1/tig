@@ -16,21 +16,18 @@ for BENCHMARK in $(echo $BENCHMARKS | jq -c '.[]'); do
     CHALLENGE_ID=$(echo $BENCHMARK | jq -r '.settings.challenge_id')
     NUM_SOLUTIONS=$(echo $BENCHMARK | jq -r '.details.num_solutions')
 
-    # Print the challenge_id for debugging
-    echo "Captured CHALLENGE_ID: $CHALLENGE_ID"
-
     # Map challenge ID to challenge name
     case "$CHALLENGE_ID" in
-        "c001" | "c_001" | "c001")
+        "c001")
             CHALLENGE_NAME="Satisfiability"
             ;;
-        "c002" | "c_002" | "c002")
+        "c002")
             CHALLENGE_NAME="Vehicle Routing"
             ;;
-        "c003" | "c_003" | "c003")
+        "c003")
             CHALLENGE_NAME="Knapsack"
             ;;
-        "c004" | "c_004" | "c004")
+        "c004")
             CHALLENGE_NAME="Vector Search"
             ;;
         *)
@@ -38,29 +35,13 @@ for BENCHMARK in $(echo $BENCHMARKS | jq -c '.[]'); do
             ;;
     esac
 
-    printf "ID: %-38s #Solutions: %-5s Challenge: %-20s Settings: %-50s \n" "$ID" "$NUM_SOLUTIONS" "$CHALLENGE_NAME" "$SETTINGS"
-    SOLUTIONS_COUNT["$CHALLENGE_ID"]=$(( ${SOLUTIONS_COUNT["$CHALLENGE_ID"]:-0} + NUM_SOLUTIONS ))
+    SOLUTIONS_COUNT["$CHALLENGE_NAME"]=$(( ${SOLUTIONS_COUNT["$CHALLENGE_NAME"]:-0} + NUM_SOLUTIONS ))
 done
 
-echo "Total solutions by Challenge:"
-for CHALLENGE_ID in "${!SOLUTIONS_COUNT[@]}"; do
-    echo "Final CHALLENGE_ID: $CHALLENGE_ID"  # Print final CHALLENGE_ID
-    case "$CHALLENGE_ID" in
-        "c001" | "c_001" | "c001")
-            CHALLENGE_NAME="Satisfiability"
-            ;;
-        "c002" | "c_002" | "c002")
-            CHALLENGE_NAME="Vehicle Routing"
-            ;;
-        "c003" | "c_003" | "c003")
-            CHALLENGE_NAME="Knapsack"
-            ;;
-        "c004" | "c_004" | "c004")
-            CHALLENGE_NAME="Vector Search"
-            ;;
-        *)
-            CHALLENGE_NAME="Unknown Challenge"
-            ;;
-    esac
-    echo "Challenge: $CHALLENGE_NAME, Total Solutions: ${SOLUTIONS_COUNT[$CHALLENGE_ID]}"
+# Display all the challenges in one line
+OUTPUT=""
+for CHALLENGE_NAME in "Satisfiability" "Vehicle Routing" "Knapsack" "Vector Search"; do
+    OUTPUT+="$CHALLENGE_NAME: ${SOLUTIONS_COUNT[$CHALLENGE_NAME]:-0}  "
 done
+
+echo "$OUTPUT"
