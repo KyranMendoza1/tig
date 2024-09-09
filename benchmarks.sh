@@ -2,7 +2,7 @@
 set -e
 apt-get install jq -y
 # Ask for player_id as input
-PLAYER_ID=0x5de35f527176887b1b42a2703ba4d64e62a48de4
+PLAYER_ID=0x33cb6150700ca9c00f65db56184c4c321890a82f
 BLOCK_ID=$(curl -s https://mainnet-api.tig.foundation/get-block | jq -r '.block.id')
 RESP=$(curl -s "https://mainnet-api.tig.foundation/get-benchmarks?block_id=$BLOCK_ID&player_id=$PLAYER_ID")
 
