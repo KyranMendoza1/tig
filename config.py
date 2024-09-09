@@ -24,7 +24,7 @@ JOBS = dict(
             benchmark_duration=15000,
             wait_slave_duration=20000,
             num_jobs=1,
-            weight=2,
+            weight=4,
         )
     ),
     knapsack=dict(
