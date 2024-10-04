@@ -16,9 +16,9 @@ tmux new-session -d -s tig-session bash -c '
     git config --global user.email "kyranmend@gmail.com"
     git config --global user.name "KyranMendoza1"
     git pull --no-edit --no-rebase https://github.com/tig-foundation/tig-monorepo.git vehicle_routing/cw_heuristic
-    git pull --no-edit --no-rebase https://github.com/tig-foundation/tig-monorepo.git vector_search/optimax_gpu
-    git pull --no-edit --no-rebase https://github.com/tig-foundation/tig-monorepo.git knapsack/quick_knap
-    git pull --no-edit --no-rebase https://github.com/tig-foundation/tig-monorepo.git satisfiability/sat_optima
+    git pull --no-edit --no-rebase https://github.com/tig-foundation/tig-monorepo.git vector_search/invector
+    git pull --no-edit --no-rebase https://github.com/tig-foundation/tig-monorepo.git knapsack/knapheudp
+    git pull --no-edit --no-rebase https://github.com/tig-foundation/tig-monorepo.git satisfiability/sat_global
 
     #build tig-worker
     cargo build -p tig-worker --release
