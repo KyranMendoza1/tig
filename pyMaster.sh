@@ -6,7 +6,7 @@ apt install -y tmux build-essential pkg-config libssl-dev git curl
 # Start a new tmux session named 'tig-session' and run the commands inside it
 tmux new-session -d -s tig-session bash -c '
     # Install Rust
-    curl --proto =https --tlsv1.3 https://sh.rustup.rs -sSf | sh -s -- -y
+    curl --proto '=https' --tlsv1.3 https://sh.rustup.rs -sSf | sh -s -- -y
     source $HOME/.cargo/env
     export PATH="$HOME/.cargo/bin:$PATH"
 
