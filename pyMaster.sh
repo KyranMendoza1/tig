@@ -26,7 +26,7 @@ tmux new-session -d -s tig-session bash -c '
     # Run Master
     cd tig-benchmarker
     pip install -r requirements.txt
-    wget -O /root/tig-monorepo/tig-benchmarker/config.json https://raw.githubusercontent.com/KyranMendoza1/tig/main/config.json
+    wget -O ~/TIG/tig-monorepo/tig-benchmarker/config.json https://raw.githubusercontent.com/KyranMendoza1/tig/main/config.json
 
     python3 master.py 0x5de35f527176887b1b42a2703ba4d64e62a48de4 3de214b978b22a7b9c0957ccfc3a95a1 config.json
 '
