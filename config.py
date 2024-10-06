@@ -10,16 +10,16 @@
     "config": {
         "job_manager": {
             "satisfiability": {
-                "batch_size": 64
+                "batch_size": 2
             },
             "vehicle_routing": {
-                "batch_size": 128
+                "batch_size": 2
             },
             "knapsack": {
-                "batch_size": 131072
+                "batch_size": 1000
             },
             "vector_search": {
-                "batch_size": 64
+                "batch_size": 2
             }
         },
         "precommit_manager": {
@@ -27,12 +27,12 @@
             "algo_selection": {
                 "satisfiability": {
                     "algorithm": "sat_global",
-                    "num_nonces": 64,
+                    "num_nonces": 2,
                     "base_fee_limit": "10000000000000000"
                 },
                 "vehicle_routing": {
                     "algorithm": "cw_heuristic",
-                    "num_nonces": 1000,
+                    "num_nonces": 10,
                     "base_fee_limit": "10000000000000000"
                 },
                 "knapsack": {
@@ -42,7 +42,7 @@
                 },
                 "vector_search": {
                     "algorithm": "invector",
-                    "num_nonces": 64,
+                    "num_nonces": 2,
                     "base_fee_limit": "10000000000000000"
                 }
             }
