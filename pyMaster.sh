@@ -11,7 +11,7 @@ tmux new-session -d -s tig-session bash -c '
     export PATH="$HOME/.cargo/bin:$PATH"
 
     # Clone and set up the repository
-    git clone -b https://github.com/tig-foundation/tig-monorepo.git
+    git clone https://github.com/tig-foundation/tig-monorepo.git
     cd tig-monorepo
     git config --global user.email "kyranmend@gmail.com"
     git config --global user.name "KyranMendoza1"
