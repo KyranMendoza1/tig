@@ -1,7 +1,7 @@
 #!/bin/bash
 # Update the package list and install necessary packages
 apt update
-apt install -y tmux build-essential pkg-config libssl-dev git curl htop
+apt install -y tmux build-essential pkg-config libssl-dev git curl
 
 # Start a new tmux session named 'tig-session' and run the commands inside it
 tmux new-session -d -s tig-session bash -c '
