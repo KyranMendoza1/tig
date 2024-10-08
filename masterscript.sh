@@ -1,4 +1,3 @@
-
 #!/bin/bash
 # Update the package list and install necessary packages
 apt update
